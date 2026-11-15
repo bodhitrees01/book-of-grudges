@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Oathbound Speculator",
+    "pts": 30,
+    "detachment": "Needgaârd Oathband",
+    "description": "This kindred hero is a master of knowing the right moment to funnel the kinhosts precious resources into the most efficient destruction of the foe. LEAGUES OF VOTANN model only. Each time a model in the bearer’s unit makes an attack, re-roll a Wound roll of 1. Each time the bearer’s unit is selected to shoot or fight, you can spend 3YP. If you do, until the end of the phase, each time a model in the bearer’s unit makes an attack, add 1 to the Wound roll."
+  },
+  {
+    "name": "Dead Reckoning",
+    "pts": 10,
+    "detachment": "Needgaârd Oathband",
+    "description": "Through vigilant and judicious calculation, this commander marshals their warriors’ reserves against future martial requirements. LEAGUES OF VOTANN model only. At the end of the turn, if the bearer is on the battlefield and you spent no YP in that turn, you can gain 1YP."
+  },
+  {
+    "name": "Iron Ambassador",
+    "pts": 5,
+    "detachment": "Needgaârd Oathband",
+    "description": "This exceptional weapon has been wielded by heroes against the enemies of numerous leagues and has been the last word in many a failed negotiation with obdurate foes. LEAGUES OF VOTANN model equipped with an Autoch-pattern combi-bolter only. Once per battle, when the bearer’s unit is selected to shoot, the bearer can use this Enhancement. If it does, spend up to 3YP and, until the end of the phase, add the number of YP you just spent to the Damage characteristic of the bearer’s ranged weapons."
+  },
+  {
+    "name": "Ancestral Crest",
+    "pts": 15,
+    "detachment": "Needgaârd Oathband",
+    "description": "It is said that this crest, inscribed with runes of the great Ancestor Cores, acts like a mobile fane through which the wisdom and gestalt power of the Votann flow. LEAGUES OF VOTANN model only. Once per turn, when you target the bearer’s unit with the Command Re-roll Stratagem, the bearer can use this Enhancement. If it does, spend 1YP and reduce the CP cost of that use of that Stratagem by 1CP."
+  },
+  {
+    "name": "Eye for Weakness",
+    "pts": 25,
+    "detachment": "Persecution Prospect",
+    "description": "Any hint of vulnerability draws the gaze of this punitive assessor like a rich vein of ore. LEAGUES OF VOTANN model only. Each time a model in the bearer’s unit makes an attack that targets an assailed unit, add 1 to the Wound roll."
+  },
+  {
+    "name": "Writ of Acquisition",
+    "pts": 10,
+    "detachment": "Persecution Prospect",
+    "description": "This mnestic mesh of circuitry records and analyses the enemy’s response under fire as witnessed by the bearer, harvesting valuable intelligence on their capabilities. LEAGUES OF VOTANN model only. In your Shooting phase, after the bearer’s unit has shot, you gain 1YP for each assailed enemy unit hit by one or more of those attacks (to a maximum of 3YP)."
+  },
+  {
+    "name": "Surgical Saboteur",
+    "pts": 10,
+    "detachment": "Persecution Prospect",
+    "description": "Experience has taught this survivor the weak points of the most significant threats, enabling them to pinpoint joints and locomotive mechanisms to slow down such brutes. LEAGUES OF VOTANN model only. In your Shooting phase, after the bearer’s unit has shot, select one MONSTER or VEHICLE unit hit by one or more of those attacks; until the start of your next Shooting phase, that unit is pinned."
+  },
+  {
+    "name": "Nomad Strategist",
+    "pts": 20,
+    "detachment": "Persecution Prospect",
+    "description": "The mobile strategies of this far-ranging commander allow them to swiftly reposition their most versatile forces and exploit weaknesses in the enemy’s battle lines. LEAGUES OF VOTANN model only. Once per battle, at the end of your opponent’s Fight phase, if the bearer is on the battlefield, it can use this Enhancement. If it does, you can spend up to 4YP. Select one HERNKYN unit from your army, and, for every 2YP you just spent, select up to one additional HERNKYN unit from your army. You can remove those units from the battlefield and place them into Strategic Reserves. You cannot select a unit that is within Engagement Range of one or more enemy units (excluding assailed units)."
+  },
+  {
+    "name": "Dêlvwerke Navigator",
+    "pts": 25,
+    "detachment": "Dêlve Assault Shift",
+    "description": "With a mastery of the dêllve’s workings, guild reserves can be expertly directed to where they are needed most. LEAGUES OF VOTANN model only. In the Reinforcements step of your Movement phase, the bearer can use this Enhancement. If it does, select one friendly CTHONIAN BESERKS unit visible to the bearer and then spend any number of YP. Return one destroyed model to that unit and then, for every 2YP you just spent, return up to one additional destroyed model to that unit."
+  },
+  {
+    "name": "Multiwave System Jammer",
+    "pts": 10,
+    "detachment": "Dêlve Assault Shift",
+    "description": "This master-wrought comms array fouls enemy sensors, blinding the foe to the bearer's closing Cthonian allies. LEAGUES OF VOTANN model only. Once per battle, in your Movement phase, if the bearer is on the battlefield, it can use this Enhancement. If it does, select one friendly CTHONIAN unit that is in Reserves. Until the end of the phase, for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is."
+  },
+  {
+    "name": "Quake Supervisor",
+    "pts": 20,
+    "detachment": "Dêlve Assault Shift",
+    "description": "This structural analyst specialises in plotting attacks that exploit underlying weaknesses to deadly effect: LEAGUES OF VOTANN model only. While the bearer is within 3\" of one or more friendly LEAGUES OF VOTANN ARTILLERY units, the bearer has the Lone Operative ability, and each time one of those ARTILLERY units makes a ranged attack that targets an enemy unit visible to the bearer, add 1 to the Hit roll."
+  },
+  {
+    "name": "Piledriver",
+    "pts": 15,
+    "detachment": "Dêlve Assault Shift",
+    "description": "Kin possessed of a ruthlessly direct attitude allow no impediments - no matter how large - to bar their path. LEAGUES OF VOTANN model only. Each time the bearer’s unit is selected to fight, the bearer can use this Enhancement. If it does, spend up to 2YP and, until the end of the phase, add the number of YP you just spent to the Damage characteristic of the bearer’s melee weapons."
+  },
+  {
+    "name": "Tactical Alchemy",
+    "pts": 10,
+    "detachment": "Brandfast Oathband",
+    "description": "The greatest kinhost commanders can transmute profitable yields into more immediate tactical and strategic support. KÂHL model only. In your Command phase, if the bearer’s unit is within range of one or more objective markers you control that are not within your deployment zone, you can spend 1YP. If you do, roll one D6: on a 4+, you gain 1CP."
+  },
+  {
+    "name": "Trivärg Cyber Implant",
+    "pts": 40,
+    "detachment": "Brandfast Oathband",
+    "description": "A neural artefact of the famed - but tragically extinct - Trivärg Fisculate Guild of Brôkhyr, this implant enables its host to coordinate fire patterns with exemplary skill and extraordinary speed, directly accessing vehicular systems to triangulate overlapping attack angles. LEAGUES OF VOTANN model only. In your Shooting phase, each time the bearer’s unit is selected to shoot, if it disembarked from a TRANSPORT this turn, or if you spend 2YP, until the end of the phase, ranged weapons equipped by models in that unit have the [sustained HITS 2] ability."
+  },
+  {
+    "name": "Precursive Judgement",
+    "pts": 15,
+    "detachment": "Brandfast Oathband",
+    "description": "This commander swiftly acts on alerts from trusted logic cores and unleashes deadly judgements before the kindred’s foes escape. KÂHL model only. While the bearer’s unit is wholly within 6\" of one or more friendly LEAGUES OF VOTANN TRANSPORT units, you can target the bearer’s unit with the Fire Overwatch Stratagem for 0CP and hits are scored on unmodified Hit rolls of 5+ while resolving that Stratagem."
+  },
+  {
+    "name": "Signature Restoration",
+    "pts": 5,
+    "detachment": "Brandfast Oathband",
+    "description": "The masterful and efficient work of this senior Brôkhyr is renowned and admired amongst the leagues. IRON-MASTER model only. Each time a friendly LEAGUES OF VOTANN model is repaired using the bearer’s Forgewrought Expertise ability, that model regains 1 additional lost wound."
+  },
+  {
+    "name": "Fârstrydr Node",
+    "pts": 20,
+    "detachment": "Hearthfyre Arsenal",
+    "description": "An evolutionary stride in teleportation technology, this experimental device shields its wearer and their companions in a bubble of esoteric force. It is.so strong that they can endure brief teleportation plunges through the Warp to strike at the most opportune time. IRON-MASTER or MEMNYR STRATEGIST model only. Models in the bearer’s unit have the Deep Strike ability."
+  },
+  {
+    "name": "Calculated Tenacity",
+    "pts": 15,
+    "detachment": "Hearthfyre Arsenal",
+    "description": "Like any other resource, resolve and bloody-mindedness can be applied in force when and where needed by those with the will to do so. IRON-MASTER or MEMNYR STRATEGIST model only. While the bearer is leading a unit, add 1 to the Objective Control characteristic of models in that unit."
+  },
+  {
+    "name": "Mantle of Elders",
+    "pts": 10,
+    "detachment": "Hearthfyre Arsenal",
+    "description": "The minds linked in this kognitaar mantle are believed to be the oldest of their kind. The complexity of their shared cognition permits strategic calculations at a level that Memnyr believe approaches the greatest fane. MEMNYR STRATEGIST model only. Each time the bearer’s unit is selected to shoot, if you spend YP using the Optimal Application Detachment rule when doing so, you can roll one D6: on a 2+, you gain 1YP."
+  },
+  {
+    "name": "Graviton Vault",
+    "pts": 5,
+    "detachment": "Hearthfyre Arsenal",
+    "description": "This rune-scribed device holds a cache of forgewrought particles. Funnelled through an Iron-master’s graviton arsenal, they mutate and cause anarchic fluxes in neuroelectrical impulses of the largest targets. IRON-MASTER model only. In your Shooting phase, after the bearer has shot, and in the Fight phase, after the bearer has fought, select one enemy MONSTER or VEHICLE unit hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+  },
+  {
+    "name": "Bastion Shield",
+    "pts": 25,
+    "detachment": "Hearthband",
+    "description": "The technologies contained within this heraldic crest radiate a dome of ablative weavewërke shielding that robs the force from enemy projectiles. LEAGUES OF VOTANN model only. Each time a ranged attack targets the bearer’s unit, if the attacking model is within 12\" of the bearer’s unit, worsen the Armour Penetration characteristic of that attack by 1. If you spend 1YP, until the end of the phase, if the attacking model is within 18\" of the bearer’s unit, worsen the Armour Penetration characteristic of that attack by 1 instead."
+  },
+  {
+    "name": "Quake Multigenerator",
+    "pts": 15,
+    "detachment": "Hearthband",
+    "description": "Extremely rare and costly to manufacture, this darkstar-powered coil enables a weapon to initiate tremendously powerful reverberations. KÂHL model only. In your Shooting phase, after the bearer has shot, select one enemy unit (excluding TITANIC units) hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+  },
+  {
+    "name": "Ironskein",
+    "pts": 10,
+    "detachment": "Hearthband",
+    "description": "A rare cloneskein threads this warrior’s bone structure and epidermis with metallic fibres. LEAGUES OF VOTANN model only. Add 2 to the bearer’s Wounds characteristic."
+  },
+  {
+    "name": "High Kâhl",
+    "pts": 30,
+    "detachment": "Hearthband",
+    "description": "This warrior’s value is only too well known by their comrades. Those Kin sworn to defend them will fight to their last breath rather than fail in this duty. KÂHL model only. Each time a model in the bearer’s unit is destroyed by a melee attack, if it has not fought this phase, roll one D6: on a 4+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play."
+  },
+  {
+    "name": "Mercenary Prospector",
+    "pts": 20,
+    "detachment": "Mercenary Oathband",
+    "description": "The most renowned military commanders of mercenary oathbands are swift to capitalise on the death and destruction of their foes. Whether tangible assets or a strategic benefit, to ignore such prizes would be to dishonour the ancestors. KÂHL model only. Each time an enemy unit is destroyed by the bearer’s unit, gain 2YP."
+  },
+  {
+    "name": "Metaphysical Brokerage",
+    "pts": 20,
+    "detachment": "Mercenary Oathband",
+    "description": "This cogitator analyses every scrap of data uncovered by their mercenary comrades, and is capable of eking an advantage over their foes in the direst of circumstances. MEMNYR STRATEGIST model only. At the end of your turn, if the bearer is on the battlefield and you gained fewer than 3YP this turn, you gain an amount of YP equal to the difference."
+  },
+  {
+    "name": "Etacarn SB9 Targeting Implant",
+    "pts": 15,
+    "detachment": "Mercenary Oathband",
+    "description": "By feeding tactical data harvested from across the battlesphere into this costly device, the wearer can gain optimal target acquisition information. LEAGUES OF VOTANN model only. Each time a model in the bearer’s unit makes an attack, re-roll a Hit roll of 1. Each time the bearer’s unit is selected to shoot or fight, you can spend 3YP. If you do, until the end of the phase, each time a model in the bearer’s unit makes an attack, that attack has the [SUSTAINED HITS 1] ability."
+  },
+  {
+    "name": "Asset Manipulator",
+    "pts": 25,
+    "detachment": "Mercenary Oathband",
+    "description": "This warrior’s value is only too well known by their comrades. Those Kin sworn to defend them will fight to their last breath rather than fail in this duty. LEAGUES OF VOTANN model only. At the start of the Command phase, you can spend 3YP. If you do, until the end of the turn, while an enemy unit is within 3\" of the bearer, subtract 1 from the Objective Control characteristic of models in that enemy unit."
+  }
+]
