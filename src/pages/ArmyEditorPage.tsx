@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Download, Plus, Trash2, Link, Swords } from 'lucide-react';
+import { ArrowLeft, Download, Plus, Trash2, Link, Swords, Star, X } from 'lucide-react';
 import type { useArmyStore } from '../store/armyStore';
 import { UnitSearch } from '../components/UnitSearch';
+import { getAllEnhancements, useEnhancementsReady } from '../data/enhancements';
 import type { ApiUnit } from '../types';
 
 interface Props {
@@ -13,7 +14,9 @@ export function ArmyEditorPage({ store }: Props) {
   const { armyId } = useParams<{ armyId: string }>();
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(false);
-  const [linkingUnit, setLinkingUnit] = useState<string | null>(null); // unitId being linked
+  const [linkingUnit, setLinkingUnit] = useState<string | null>(null);
+  const [editingEnhUnit, setEditingEnhUnit] = useState<string | null>(null);
+  useEnhancementsReady();
 
   const army = store.armies.find((a) => a.id === armyId);
 
@@ -57,6 +60,16 @@ export function ArmyEditorPage({ store }: Props) {
       : [...current, leaderId];
     store.updateUnit(army.id, unitId, { attachedLeaderIds: next });
     setLinkingUnit(null);
+  };
+
+  const toggleEnhancement = (unitId: string, enhName: string) => {
+    const unit = army.units.find((u) => u.id === unitId);
+    if (!unit) return;
+    const current = unit.enhancements ?? [];
+    const next = current.includes(enhName)
+      ? current.filter((e) => e !== enhName)
+      : [...current, enhName];
+    store.updateUnit(army.id, unitId, { enhancements: next.length ? next : undefined });
   };
 
   const leaders = army.units.filter((u) => u.unitData.isLeader);
@@ -122,6 +135,13 @@ export function ArmyEditorPage({ store }: Props) {
                   )}
                 </div>
                 <div className="unit-row-actions">
+                  <button
+                    className={`btn-icon ${editingEnhUnit === armyUnit.id ? 'btn-active' : ''}`}
+                    title="Edit enhancement"
+                    onClick={() => setEditingEnhUnit(editingEnhUnit === armyUnit.id ? null : armyUnit.id)}
+                  >
+                    <Star size={16} />
+                  </button>
                   {leaders.length > 0 && !armyUnit.unitData.isLeader && (
                     <button
                       className="btn-icon"
@@ -155,6 +175,49 @@ export function ArmyEditorPage({ store }: Props) {
                     ))}
                   </div>
                 )}
+
+                {editingEnhUnit === armyUnit.id && (() => {
+                  const allEnhs = getAllEnhancements();
+                  const current = armyUnit.enhancements ?? [];
+                  return (
+                    <div className="enhancement-picker card">
+                      <p className="picker-label">Enhancement:</p>
+                      {current.length > 0 && (
+                        <div className="enh-current">
+                          {current.map((e) => (
+                            <span key={e} className="enh-pill">
+                              {e}
+                              <button
+                                type="button"
+                                className="enh-pill-remove"
+                                onClick={() => toggleEnhancement(armyUnit.id, e)}
+                              >
+                                <X size={10} />
+                              </button>
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {current.length === 0 && (
+                        <div className="enh-pick-list">
+                          {allEnhs.length > 0 ? allEnhs.map((e) => (
+                            <button
+                              key={e.name}
+                              type="button"
+                              className="enh-pick-item"
+                              onClick={() => { toggleEnhancement(armyUnit.id, e.name); setEditingEnhUnit(null); }}
+                            >
+                              <span className="enh-pick-name">{e.name}</span>
+                              <span className="enh-pick-det">{e.detachment}</span>
+                            </button>
+                          )) : (
+                            <p className="paste-hint">Enhancement data not loaded yet.</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             ))}
           </div>

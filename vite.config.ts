@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react()],
   // When deploying to GitHub Pages at https://<user>.github.io/<repo>/
   // set base to '/<repo>/'. For a custom domain or root deployment leave as '/'.
-  base: process.env.VITE_BASE_PATH ?? '/',
+  base: process.env.VITE_BASE_PATH ?? '/book-of-grudges/',
 })

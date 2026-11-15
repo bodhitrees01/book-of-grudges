@@ -202,6 +202,29 @@ select { appearance: auto; }
 }
 .picker-item input { width: auto; }
 
+/* Enhancement picker */
+.enhancement-picker { width: 100%; margin-top: 8px; }
+.enh-current { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.enh-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 12px; padding: 2px 8px; font-size: .8rem;
+}
+.enh-pill-remove { background: none; border: none; color: var(--gold); cursor: pointer; padding: 0; display: flex; align-items: center; }
+.enh-pick-list { display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; }
+.enh-pick-item {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 8px; border-radius: 6px; background: none;
+  border: 1px solid var(--border); text-align: left; cursor: pointer; gap: 8px;
+  color: var(--text); font-size: .88rem; font-weight: 400; text-transform: none; letter-spacing: 0;
+}
+.enh-pick-item:hover { background: var(--surface-hover); border-color: var(--gold); }
+.enh-pick-name { flex: 1; }
+.enh-pick-det { font-size: .75rem; color: var(--muted); white-space: nowrap; }
+.btn-active { color: var(--gold) !important; border-color: var(--gold) !important; }
+
 /* ── Section headers ── */
 .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .section-header h2 { font-size: 1rem; font-weight: 700; color: var(--text); }
