@@ -6,7 +6,7 @@ import { AttackPanel } from './AttackPanel';
 import { AbilitiesPanel } from './AbilitiesPanel';
 import { parseLoadoutCounts, weaponCount } from '../utils/loadoutCounts';
 import { categorizeAbility, isWeaponKeywordAbility } from '../utils/categorizeAbility';
-import { lookupEnhancement } from '../data/enhancements';
+import { lookupEnhancement, useEnhancementsReady } from '../data/enhancements';
 
 interface Props {
   armyUnit: ArmyUnit;
@@ -166,6 +166,7 @@ export function Datasheet({
 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
+  useEnhancementsReady(); // triggers re-render once enhancements.json is loaded
 
   const unit = armyUnit.unitData;
 
