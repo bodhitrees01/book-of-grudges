@@ -170,6 +170,18 @@ export function Datasheet({
 
   const unit = armyUnit.unitData;
 
+  // Resolve enhancements: use the dedicated field if present, otherwise fall
+  // back to parsing "Enhancement: <name>" lines out of notes (legacy imports
+  // that pre-date the dedicated field will have them there).
+  const getEnhancements = (au: ArmyUnit): string[] => {
+    if (au.enhancements !== undefined) return au.enhancements;
+    if (!au.notes) return [];
+    return au.notes
+      .split('\n')
+      .map((l) => l.match(/^Enhancement:\s*(.+)$/i)?.[1]?.trim())
+      .filter(Boolean) as string[];
+  };
+
   // Parse imported loadout counts for the host unit; only used in battle mode
   const hostNoteCounts = useMemo(
     () => (isBattle && armyUnit.notes ? parseLoadoutCounts(armyUnit.notes) : new Map<string, number>()),
@@ -307,19 +319,19 @@ export function Datasheet({
                 <AbilitiesPanel
                   sources={[
                     ...attachedLeaders
-                      .filter((l) => l.unitData.abilities.length > 0 || (l.enhancements?.length ?? 0) > 0)
+                      .filter((l) => l.unitData.abilities.length > 0 || getEnhancements(l).length > 0)
                       .map((l) => ({
                         sourceName: l.unitData.name,
                         abilities: [
                           ...l.unitData.abilities,
-                          ...(l.enhancements ?? []).map(lookupEnhancement),
+                          ...getEnhancements(l).map(lookupEnhancement),
                         ],
                       })),
                     {
                       sourceName: unit.name,
                       abilities: [
                         ...unit.abilities,
-                        ...(armyUnit.enhancements ?? []).map(lookupEnhancement),
+                        ...getEnhancements(armyUnit).map(lookupEnhancement),
                       ],
                     },
                   ].filter((s) => s.abilities.length > 0)}
@@ -371,7 +383,7 @@ export function Datasheet({
               <WeaponsBlock unit={unit} />
 
               {(unit.abilities.filter((ab) => !isWeaponKeywordAbility(ab.name)).length > 0 ||
-                (armyUnit.enhancements?.length ?? 0) > 0) && (
+                getEnhancements(armyUnit).length > 0) && (
                 <div className="raw-abilities-block">
                   <h4 className="section-heading">
                     {isMerged ? `${unit.name} Abilities` : 'Unit Abilities'}
@@ -383,7 +395,7 @@ export function Datasheet({
                         <strong>{ab.name}:</strong> {ab.description}
                       </div>
                     ))}
-                  {(armyUnit.enhancements ?? []).map((enh, i) => {
+                  {getEnhancements(armyUnit).map((enh, i) => {
                     const ab = lookupEnhancement(enh);
                     return (
                       <div key={`enh-${i}`} className="raw-ability raw-ability--enhancement">
