@@ -206,10 +206,6 @@ export function Datasheet({
 
   const isMerged = attachedLeaders.length > 0;
 
-  const headerTitle = isMerged
-    ? `${unit.name} + ${attachedLeaders.map((l) => l.unitData.name).join(' + ')}`
-    : unit.name;
-
   // For merged units show the leader's portrait; otherwise the unit's own
   const portraitUnit = isMerged && attachedLeaders.length > 0 ? attachedLeaders[0].unitData : unit;
   const portraitUrl = portraitUnit.imageUrl;
@@ -231,7 +227,14 @@ export function Datasheet({
             </svg>
           )}
         </div>
-        <span className="unit-name">{headerTitle}</span>
+        {isMerged ? (
+          <span className="unit-name unit-name--merged">
+            <strong>{attachedLeaders.map((l) => l.unitData.name).join(' + ')}</strong>
+            <em className="unit-name-attached">Attached to: {unit.name}</em>
+          </span>
+        ) : (
+          <span className="unit-name">{unit.name}</span>
+        )}
         {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
       </button>
 

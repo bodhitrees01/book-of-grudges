@@ -296,6 +296,9 @@ select { appearance: auto; }
 }
 .datasheet-header:hover { background: rgba(255,255,255,.06); }
 .datasheet-header .unit-name { font-size: 1rem; font-weight: 700; color: var(--gold); flex: 1; }
+.datasheet-header .unit-name--merged { display: flex; flex-direction: column; gap: 2px; }
+.datasheet-header .unit-name--merged strong { font-size: 1rem; font-weight: 700; color: var(--gold); }
+.datasheet-header .unit-name-attached { font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--muted); }
 .unit-meta { display: flex; gap: 6px; align-items: center; }
 
 /* Portrait */
