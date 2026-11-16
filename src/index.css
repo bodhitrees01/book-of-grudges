@@ -285,17 +285,38 @@ select { appearance: auto; }
 .datasheet-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 12px;
+  padding: 0 16px 0 0;
   background: rgba(255,255,255,.03);
   border-bottom: 1px solid var(--border);
   width: 100%;
   text-align: left;
   color: var(--text);
+  overflow: hidden;
 }
 .datasheet-header:hover { background: rgba(255,255,255,.06); }
 .datasheet-header .unit-name { font-size: 1rem; font-weight: 700; color: var(--gold); flex: 1; }
 .unit-meta { display: flex; gap: 6px; align-items: center; }
+
+/* Portrait */
+.unit-portrait {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+}
+.unit-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.unit-portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .datasheet-body { padding: 16px; display: flex; flex-direction: column; gap: 0; }
 
 /* ── Stats table ── */

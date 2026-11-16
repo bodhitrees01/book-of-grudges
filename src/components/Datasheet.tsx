@@ -206,12 +206,13 @@ export function Datasheet({
 
   const isMerged = attachedLeaders.length > 0;
 
-  const totalPoints =
-    unit.points + attachedLeaders.reduce((s, l) => s + l.unitData.points, 0);
-
   const headerTitle = isMerged
     ? `${unit.name} + ${attachedLeaders.map((l) => l.unitData.name).join(' + ')}`
     : unit.name;
+
+  // For merged units show the leader's portrait; otherwise the unit's own
+  const portraitUnit = isMerged && attachedLeaders.length > 0 ? attachedLeaders[0].unitData : unit;
+  const portraitUrl = portraitUnit.imageUrl;
 
   return (
     <div className={`datasheet${isMerged ? ' datasheet--merged' : ''}`}>
@@ -220,12 +221,17 @@ export function Datasheet({
         onClick={() => setExpanded((v) => !v)}
         type="button"
       >
+        <div className="unit-portrait">
+          {portraitUrl ? (
+            <img src={portraitUrl} alt={portraitUnit.name} className="unit-portrait-img" />
+          ) : (
+            <svg className="unit-portrait-placeholder" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="4" fill="var(--surface2)" />
+              <path d="M24 8L28 18H38L30 24L33 34L24 28L15 34L18 24L10 18H20L24 8Z" fill="var(--gold)" opacity="0.6" />
+            </svg>
+          )}
+        </div>
         <span className="unit-name">{headerTitle}</span>
-        <span className="unit-meta">
-          <span className="faction-tag">{unit.faction}</span>
-          <span className="points-tag">{totalPoints} pts</span>
-          {unit.isLeader && <span className="leader-tag">Leader</span>}
-        </span>
         {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
       </button>
 

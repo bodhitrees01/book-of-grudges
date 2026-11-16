@@ -64,6 +64,8 @@ export interface ApiUnit {
   keywords: string[];
   points: number;
   isLeader?: boolean;
+  /** Portrait image URL — relative path like "data/images/kahl.jpg" or absolute URL */
+  imageUrl?: string;
 }
 
 export interface ArmyUnit {
