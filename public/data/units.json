@@ -1,7 +1,7 @@
 [
   {
     "id": "2e6e-95a1-60ad-7b1c",
-    "name": "\u00dbthar the Destined",
+    "name": "Ûthar the Destined",
     "faction": "Leagues of Votann",
     "points": 100,
     "isLeader": true,
@@ -10,12 +10,12 @@
       "Infantry",
       "Character",
       "Epic Hero",
-      "\u00dbthar the Destined",
+      "Ûthar the Destined",
       "Leader"
     ],
     "profiles": [
       {
-        "name": "\u00dbthar the Destined",
+        "name": "Ûthar the Destined",
         "movement": "5\"",
         "toughness": "5",
         "save": "3+",
@@ -285,7 +285,7 @@
   },
   {
     "id": "1b00-2abb-718f-def6",
-    "name": "K\u00e2hl",
+    "name": "Kâhl",
     "faction": "Leagues of Votann",
     "points": 65,
     "isLeader": true,
@@ -293,12 +293,12 @@
       "Faction: Leagues of Votann",
       "Infantry",
       "Character",
-      "K\u00e2hl",
+      "Kâhl",
       "Leader"
     ],
     "profiles": [
       {
-        "name": "K\u00e2hl",
+        "name": "Kâhl",
         "movement": "5\"",
         "toughness": "5",
         "save": "3+",
@@ -492,7 +492,7 @@
     ],
     "rangedWeapons": [
       {
-        "name": "\u27a4 Ancestral Wrath - witchfire",
+        "name": "➤ Ancestral Wrath - witchfire",
         "range": "24\"",
         "attacks": "3",
         "skill": "3+",
@@ -504,7 +504,7 @@
         ]
       },
       {
-        "name": "\u27a4 Ancestral Wrath - focused witchfire",
+        "name": "➤ Ancestral Wrath - focused witchfire",
         "range": "24\"",
         "attacks": "6",
         "skill": "3+",
@@ -566,7 +566,7 @@
       },
       {
         "name": "Unit Composition",
-        "description": "If this unit\u2019s Grimnyr model is ever destroyed, all of this unit\u2019s remaining CORV models are also destroyed. While embarking within a **Transport** and while embarked within a **Transport**, each CORV model takes up the space of 0 models.\u2019"
+        "description": "If this unit’s Grimnyr model is ever destroyed, all of this unit’s remaining CORV models are also destroyed. While embarking within a **Transport** and while embarked within a **Transport**, each CORV model takes up the space of 0 models.’"
       },
       {
         "name": "Prioritised Efficiency",
@@ -588,7 +588,7 @@
   },
   {
     "id": "8f33-5601-3707-78f4",
-    "name": "Br\u00f4khyr Iron-master",
+    "name": "Brôkhyr Iron-master",
     "faction": "Leagues of Votann",
     "points": 70,
     "isLeader": true,
@@ -596,12 +596,12 @@
       "Faction: Leagues of Votann",
       "Infantry",
       "Character",
-      "Br\u00f4khyr",
+      "Brôkhyr",
       "Leader"
     ],
     "profiles": [
       {
-        "name": "Br\u00f4khyr Iron-master",
+        "name": "Brôkhyr Iron-master",
         "movement": "5\"",
         "toughness": "5",
         "save": "4+",
@@ -699,16 +699,16 @@
         "description": "Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1."
       },
       {
-        "name": "Br\u00f4khyr Guild Support",
+        "name": "Brôkhyr Guild Support",
         "description": "While this unit is within 3\" of one or more friendly **Leagues of Votann Vehicle** or **Ironkin Steeljacks** units, if this unit is not an attached unit, it has the Lone Operative ability."
       },
       {
         "name": "Leader",
-        "description": "This model can be attached to the following units:BR\u00d4KHYR THUNDERKYN, HEARTHKYN WARRIORS"
+        "description": "This model can be attached to the following units:BRÔKHYR THUNDERKYN, HEARTHKYN WARRIORS"
       },
       {
         "name": "Unit Composition",
-        "description": "If this unit\u2019s Br\u00f4khyr Iron\u2011master model is ever destroyed, all of this unit\u2019s remaining E\u2011COG models are also destroyed. While embarking within a **Transport** and while embarked within a **Transport**, each E\u2011COG model takes up the space of 0 models."
+        "description": "If this unit’s Brôkhyr Iron‑master model is ever destroyed, all of this unit’s remaining E‑COG models are also destroyed. While embarking within a **Transport** and while embarked within a **Transport**, each E‑COG model takes up the space of 0 models."
       },
       {
         "name": "Forgewrought Expertise",
@@ -1072,11 +1072,11 @@
     "abilities": [
       {
         "name": "Outflanking Mag-Riders",
-        "description": "At the end of your opponent\u2019s turn, if this unit is wholly within 9\" of one or more battlefield edges and not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
+        "description": "At the end of your opponent’s turn, if this unit is wholly within 9\" of one or more battlefield edges and not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
       },
       {
         "name": "Comms array",
-        "description": "Each time you target the bearer\u2019s unit with a Stratagem, roll one D6: on a 5+, you gain 1CP."
+        "description": "Each time you target the bearer’s unit with a Stratagem, roll one D6: on a 5+, you gain 1CP."
       },
       {
         "name": "Pan-spectral scanner",
@@ -1197,7 +1197,7 @@
       },
       {
         "name": "Saturation Rounds",
-        "description": "This unit\u2019s ranged attacks have [IGNORES COVER]."
+        "description": "This unit’s ranged attacks have [IGNORES COVER]."
       },
       {
         "name": "Optimised Attack Lines",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "ea1b-99f6-c398-06b1",
-    "name": "Br\u00f4khyr Thunderkyn",
+    "name": "Brôkhyr Thunderkyn",
     "faction": "Leagues of Votann",
     "points": 80,
     "isLeader": false,
@@ -1232,11 +1232,11 @@
       "Infantry",
       "Exoframe",
       "Thunderkyn",
-      "Br\u00f4khyr"
+      "Brôkhyr"
     ],
     "profiles": [
       {
-        "name": "Br\u00f4khyr Thunderkyn",
+        "name": "Brôkhyr Thunderkyn",
         "movement": "5\"",
         "toughness": "6",
         "save": "3+",
@@ -1603,10 +1603,10 @@
     "abilities": [
       {
         "name": "Pragmatic Hunters",
-        "description": "In your opponent's Movement phase, if an enemy unit ends a move within 8\u201d of this unit, if this unit is not within Engagement Range of one or more enemy units, this unit can make a Normal move of up to D6\u201d.'"
+        "description": "In your opponent's Movement phase, if an enemy unit ends a move within 8” of this unit, if this unit is not within Engagement Range of one or more enemy units, this unit can make a Normal move of up to D6”.'"
       },
       {
-        "name": "Shroudw\u00ebrke Talismans",
+        "name": "Shroudwërke Talismans",
         "description": "This unit has -3\" **detection range**."
       },
       {
@@ -1678,7 +1678,7 @@
     ],
     "meleeWeapons": [
       {
-        "name": "\u27a4 Bane - strike",
+        "name": "➤ Bane - strike",
         "range": "Melee",
         "attacks": "5",
         "skill": "2+",
@@ -1690,7 +1690,7 @@
         ]
       },
       {
-        "name": "\u27a4 Bane - sweep",
+        "name": "➤ Bane - sweep",
         "range": "Melee",
         "attacks": "10",
         "skill": "2+",
@@ -1707,7 +1707,7 @@
       },
       {
         "name": "Unhinged Vengeance",
-        "description": "In your opponent\u2019s Shooting phase, when an enemy unit has shot, if this model lost one or more wounds as a result of those attacks, this unit can make a **surge move** of up to D6+2\"."
+        "description": "In your opponent’s Shooting phase, when an enemy unit has shot, if this model lost one or more wounds as a result of those attacks, this unit can make a **surge move** of up to D6+2\"."
       },
       {
         "name": "Lone Operative",
@@ -1789,7 +1789,7 @@
       },
       {
         "name": "Predictive Guidance",
-        "description": "Once per battle round, when you target this unit with the **Fire Overwatch/Heroic Intervention** stratagem, you can use this ability. If you do, that use of that stratagem is \u20111 CP."
+        "description": "Once per battle round, when you target this unit with the **Fire Overwatch/Heroic Intervention** stratagem, you can use this ability. If you do, that use of that stratagem is ‑1 CP."
       },
       {
         "name": "Leader",
@@ -1835,7 +1835,7 @@
     ],
     "rangedWeapons": [
       {
-        "name": "\u27a4 Transmatter inverter - half charge",
+        "name": "➤ Transmatter inverter - half charge",
         "range": "12\"",
         "attacks": "3",
         "skill": "2+",
@@ -1847,7 +1847,7 @@
         ]
       },
       {
-        "name": "\u27a4 Transmatter inverter - full charge",
+        "name": "➤ Transmatter inverter - full charge",
         "range": "18\"",
         "attacks": "3",
         "skill": "2+",
@@ -1860,7 +1860,7 @@
         ]
       },
       {
-        "name": "\u27a4 Transmatter inverter - overcharge",
+        "name": "➤ Transmatter inverter - overcharge",
         "range": "24\"",
         "attacks": "3",
         "skill": "2+",
@@ -2533,7 +2533,7 @@
   },
   {
     "id": "c7ea-1b76-c8c1-4786",
-    "name": "Berehk Stornbr\u00f6w",
+    "name": "Berehk Stornbröw",
     "faction": "Leagues of Votann",
     "points": 85,
     "isLeader": true,
@@ -2542,13 +2542,13 @@
       "Infantry",
       "Character",
       "Cthonian",
-      "Berehk Stornbr\u00f6w",
+      "Berehk Stornbröw",
       "Faction: Leagues of Votann",
       "Leader"
     ],
     "profiles": [
       {
-        "name": "Berehk Stornbr\u00f6w",
+        "name": "Berehk Stornbröw",
         "movement": "6\"",
         "toughness": "6",
         "save": "5+",
@@ -2562,7 +2562,7 @@
     "rangedWeapons": [],
     "meleeWeapons": [
       {
-        "name": "\u27a4 Kroml\u00f4k's Revenge - graviton strikes",
+        "name": "➤ Kromlôk's Revenge - graviton strikes",
         "range": "Melee",
         "attacks": "4",
         "skill": "2+",
@@ -2576,7 +2576,7 @@
         ]
       },
       {
-        "name": "\u27a4 Kroml\u00f4k's Revenge - plasma sweeps",
+        "name": "➤ Kromlôk's Revenge - plasma sweeps",
         "range": "Melee",
         "attacks": "8",
         "skill": "2+",
