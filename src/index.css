@@ -731,14 +731,25 @@ select { appearance: auto; }
   border-color: #60a5fa;
   color: #fff;
 }
-/* Model count column in battle-mode weapon tables */
+/* Weapon name cell: count on left, name + keywords stacked */
+.weapon-name-cell { padding: 5px 8px !important; }
+.weapon-name-row { display: flex; align-items: flex-start; gap: 6px; }
+.weapon-name-stack { display: flex; flex-direction: column; gap: 1px; }
+.weapon-name { font-size: .82rem; color: var(--text); }
+.weapon-keywords {
+  font-size: .72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
 .weapon-count {
   color: var(--gold);
   font-weight: 700;
   font-size: .82rem;
   white-space: nowrap;
-  min-width: 2.2rem;
-  text-align: center;
+  min-width: 2rem;
+  padding-top: 1px;
+  flex-shrink: 0;
 }
 
 .attach-leader-none {

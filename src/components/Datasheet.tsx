@@ -78,21 +78,28 @@ function WeaponTable({
       <thead>
         <tr>
           <th>Weapon</th>
-          {showCount && <th title="Models with this weapon">#</th>}
           <th>Range</th><th>A</th><th>{skillHeader}</th>
-          <th>S</th><th>AP</th><th>D</th><th>Keywords</th>
+          <th>S</th><th>AP</th><th>D</th>
         </tr>
       </thead>
       <tbody>
         {rows.map(({ w, count }, i) => (
           <tr key={i}>
-            <td>{w.name}</td>
-            {showCount && (
-              <td className="weapon-count">{count != null && count > 0 ? `${count}×` : '—'}</td>
-            )}
+            <td className="weapon-name-cell">
+              <div className="weapon-name-row">
+                {showCount && (
+                  <span className="weapon-count">{count != null && count > 0 ? `${count}×` : '—'}</span>
+                )}
+                <div className="weapon-name-stack">
+                  <span className="weapon-name">{w.name}</span>
+                  {w.keywords.length > 0 && (
+                    <span className="weapon-keywords">[{w.keywords.join(', ')}]</span>
+                  )}
+                </div>
+              </div>
+            </td>
             <td>{w.range}</td><td>{w.attacks}</td><td>{w.skill}</td>
             <td>{w.strength}</td><td>{w.ap}</td><td>{w.damage}</td>
-            <td>{w.keywords.join(', ')}</td>
           </tr>
         ))}
       </tbody>
