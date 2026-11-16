@@ -34,7 +34,7 @@ html, body, #root {
   margin: 0 auto;
   padding: 24px 16px 64px;
 }
-.page-battle { max-width: 1100px; }
+.page-battle { max-width: 1200px; padding-left: 8px; padding-right: 8px; }
 
 .page-header {
   display: flex;
@@ -322,7 +322,7 @@ select { appearance: auto; }
   height: 100%;
   display: block;
 }
-.datasheet-body { padding: 16px; display: flex; flex-direction: column; gap: 0; }
+.datasheet-body { padding: 12px 8px; display: flex; flex-direction: column; gap: 0; }
 
 /* ── Stats table ── */
 .stats-block { margin-bottom: 12px; }
@@ -381,6 +381,51 @@ select { appearance: auto; }
 .raw-abilities-block, .attached-leaders { margin-bottom: 12px; }
 .raw-ability { font-size: .85rem; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
 .raw-ability strong { color: var(--gold); }
+
+/* ── Weapon keyword tooltip ── */
+.weapon-keyword--plain { color: var(--muted); font-size: .78rem; }
+.weapon-keyword--link { position: relative; display: inline-block; }
+.weapon-keyword-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent2);
+  font-size: .78rem;
+  font-weight: 600;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+.weapon-keyword-btn:hover { color: var(--gold); }
+.weapon-keyword-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  width: 260px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+.weapon-keyword-tooltip strong {
+  font-size: .82rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.weapon-keyword-tooltip-body {
+  font-size: .80rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
 .leader-pill {
   background: rgba(212,168,67,.15);
   border: 1px solid rgba(212,168,67,.3);

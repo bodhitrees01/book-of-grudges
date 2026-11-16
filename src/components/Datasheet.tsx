@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Plus, Trash2, UserPlus, UserMinus } from 'lucide-react';
 import type { ArmyUnit, AbilityEffect, Army, WeaponProfile } from '../types';
 import { AddAbilityForm } from './AddAbilityForm';
 import { AttackPanel } from './AttackPanel';
 import { AbilitiesPanel } from './AbilitiesPanel';
+import { WeaponKeyword } from './WeaponKeyword';
 import { parseLoadoutCounts, weaponCount } from '../utils/loadoutCounts';
 import { categorizeAbility, isWeaponKeywordAbility } from '../utils/categorizeAbility';
 import { lookupEnhancement, useEnhancementsReady } from '../data/enhancements';
@@ -56,14 +57,27 @@ function StatsBlock({ unit, label }: { unit: ArmyUnit['unitData']; label?: strin
   );
 }
 
+function useWeaponKeywords(): Record<string, string> {
+  const [rules, setRules] = useState<Record<string, string>>({});
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/weapon-keywords.json`)
+      .then((r) => r.json())
+      .then(setRules)
+      .catch(() => {});
+  }, []);
+  return rules;
+}
+
 function WeaponTable({
   weapons,
   skillHeader,
   noteCounts,
+  rules,
 }: {
   weapons: WeaponProfile[];
   skillHeader: 'BS' | 'WS';
   noteCounts?: Map<string, number>;
+  rules: Record<string, string>;
 }) {
   const rows: { w: WeaponProfile; count: number | undefined }[] = weapons
     .map((w) => ({ w, count: noteCounts ? weaponCount(w.name, noteCounts) : undefined }))
@@ -93,7 +107,14 @@ function WeaponTable({
                 <div className="weapon-name-stack">
                   <span className="weapon-name">{w.name}</span>
                   {w.keywords.length > 0 && (
-                    <span className="weapon-keywords">[{w.keywords.join(', ')}]</span>
+                    <span className="weapon-keywords">
+                      {w.keywords.map((kw, ki) => (
+                        <span key={ki}>
+                          {ki > 0 && ', '}
+                          <WeaponKeyword keyword={kw} rules={rules} />
+                        </span>
+                      ))}
+                    </span>
                   )}
                 </div>
               </div>
@@ -111,10 +132,12 @@ function WeaponsBlock({
   unit,
   label,
   noteCounts,
+  rules,
 }: {
   unit: ArmyUnit['unitData'];
   label?: string;
   noteCounts?: Map<string, number>;
+  rules: Record<string, string>;
 }) {
   // Only filter when at least one weapon actually matches the notes (avoid blank tables)
   const anyWeaponMatches = (nc: Map<string, number>) =>
@@ -148,13 +171,13 @@ function WeaponsBlock({
       {ranged.length > 0 && (
         <div className="weapons-block">
           <h4 className="weapons-heading">Ranged Weapons</h4>
-          <WeaponTable weapons={ranged} skillHeader="BS" noteCounts={effectiveCounts} />
+          <WeaponTable weapons={ranged} skillHeader="BS" noteCounts={effectiveCounts} rules={rules} />
         </div>
       )}
       {melee.length > 0 && (
         <div className="weapons-block">
           <h4 className="weapons-heading">Melee Weapons</h4>
-          <WeaponTable weapons={melee} skillHeader="WS" noteCounts={effectiveCounts} />
+          <WeaponTable weapons={melee} skillHeader="WS" noteCounts={effectiveCounts} rules={rules} />
         </div>
       )}
     </div>
@@ -174,6 +197,7 @@ export function Datasheet({
   const [expanded, setExpanded] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   useEnhancementsReady(); // triggers re-render once enhancements.json is loaded
+  const weaponRules = useWeaponKeywords();
 
   const unit = armyUnit.unitData;
 
@@ -267,6 +291,7 @@ export function Datasheet({
                     <WeaponsBlock
                       unit={leader.unitData}
                       noteCounts={leader.notes ? parseLoadoutCounts(leader.notes) : undefined}
+                      rules={weaponRules}
                     />
                   </div>
                 ))}
@@ -280,7 +305,7 @@ export function Datasheet({
                   </div>
                 )}
                 <StatsBlock unit={unit} />
-                <WeaponsBlock unit={unit} noteCounts={hostNoteCounts.size > 0 ? hostNoteCounts : undefined} />
+                <WeaponsBlock unit={unit} noteCounts={hostNoteCounts.size > 0 ? hostNoteCounts : undefined} rules={weaponRules} />
 
                 {/* Defensive + Other abilities stay in the left column */}
                 {(() => {
@@ -383,7 +408,7 @@ export function Datasheet({
                     )}
                   </div>
                   <StatsBlock unit={leader.unitData} />
-                  <WeaponsBlock unit={leader.unitData} />
+                  <WeaponsBlock unit={leader.unitData} rules={weaponRules} />
                   {leader.unitData.abilities.filter((ab) => !isWeaponKeywordAbility(ab.name)).length > 0 && (
                     <div className="leader-abilities-block">
                       <h4 className="section-heading leader-abilities-heading">
@@ -410,7 +435,7 @@ export function Datasheet({
                 </div>
               )}
               <StatsBlock unit={unit} />
-              <WeaponsBlock unit={unit} />
+              <WeaponsBlock unit={unit} rules={weaponRules} />
 
               {(unit.abilities.filter((ab) => !isWeaponKeywordAbility(ab.name)).length > 0 ||
                 getEnhancements(armyUnit).length > 0) && (
