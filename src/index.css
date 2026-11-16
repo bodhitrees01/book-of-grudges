@@ -276,12 +276,14 @@ select { appearance: auto; }
 
 /* ── Datasheet ── */
 .datasheet {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  margin-bottom: 16px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: 0;
   overflow: hidden;
 }
+/* Thin rule between datasheets instead of a card border */
+.datasheet + .datasheet { border-top: 1px solid var(--border); }
 .datasheet-header {
   display: flex;
   align-items: center;
@@ -296,9 +298,9 @@ select { appearance: auto; }
 }
 .datasheet-header:hover { background: rgba(255,255,255,.06); }
 .datasheet-header .unit-name { font-size: 1rem; font-weight: 700; color: var(--gold); flex: 1; }
-.datasheet-header .unit-name--merged { display: flex; flex-direction: column; gap: 2px; }
+.datasheet-header .unit-name--merged { display: flex; flex-direction: column; gap: 1px; }
 .datasheet-header .unit-name--merged strong { font-size: 1rem; font-weight: 700; color: var(--gold); }
-.datasheet-header .unit-name-attached { font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--muted); }
+.datasheet-header .unit-name-attached { font-size: 1rem; font-weight: 700; font-style: normal; color: var(--accent2); }
 .unit-meta { display: flex; gap: 6px; align-items: center; }
 
 /* Portrait */
@@ -622,19 +624,17 @@ select { appearance: auto; }
 
 /* ── Leader attachment ── */
 
-/* Merged datasheet gets a gold left-border accent */
-.datasheet--merged {
-  border-color: rgba(212,168,67,.4);
-  box-shadow: 0 0 0 1px rgba(212,168,67,.15), var(--shadow);
-}
+/* Merged datasheet — no extra box */
+.datasheet--merged { border-color: transparent; box-shadow: none; }
 
-/* Leader block inside a merged datasheet */
+/* Leader block: no box, just a bottom rule to separate from the host unit */
 .leader-block {
-  border: 1px solid rgba(212,168,67,.25);
-  border-radius: var(--radius);
-  background: rgba(212,168,67,.05);
-  padding: 12px 14px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0 0 12px 0;
   margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 }
 .leader-block-header {
   display: flex;
