@@ -271,7 +271,14 @@ export function Datasheet({
                   </div>
                 ))}
 
-                {isMerged && <div className="unit-block-label">{unit.name}</div>}
+                {isMerged && (
+                  <div className="unit-block-header">
+                    <span className="unit-block-title">
+                      <span className="attached-tag-inline">Attached</span>
+                      {unit.name}
+                    </span>
+                  </div>
+                )}
                 <StatsBlock unit={unit} />
                 <WeaponsBlock unit={unit} noteCounts={hostNoteCounts.size > 0 ? hostNoteCounts : undefined} />
 
@@ -394,7 +401,14 @@ export function Datasheet({
                 </div>
               ))}
 
-              {isMerged && <div className="unit-block-label">{unit.name}</div>}
+              {isMerged && (
+                <div className="unit-block-header">
+                  <span className="unit-block-title">
+                    <span className="attached-tag-inline">Attached</span>
+                    {unit.name}
+                  </span>
+                </div>
+              )}
               <StatsBlock unit={unit} />
               <WeaponsBlock unit={unit} />
 
