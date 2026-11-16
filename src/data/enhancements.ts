@@ -16,7 +16,7 @@ const _listeners = new Set<() => void>();
 export async function loadEnhancements(): Promise<void> {
   if (_loaded) return;
   try {
-    const res = await fetch('/data/enhancements.json');
+    const res = await fetch(`${import.meta.env.BASE_URL}data/enhancements.json`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data: EnhancementEntry[] = await res.json();
     _store = new Map(data.map((e) => [e.name.toLowerCase(), e]));
