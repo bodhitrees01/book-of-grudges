@@ -281,7 +281,8 @@
         "name": "Devastating Wounds",
         "description": "Devastating Wounds"
       }
-    ]
+    ],
+    "imageUrl": "data/images/hearthkyn-warriors.jpg"
   },
   {
     "id": "1b00-2abb-718f-def6",
@@ -376,7 +377,8 @@
         "name": "Leader",
         "description": "Leader"
       }
-    ]
+    ],
+    "imageUrl": "data/images/kahl.jpg"
   },
   {
     "id": "2cc6-e2bf-635f-1260",
@@ -730,7 +732,8 @@
         "name": "Pistol",
         "description": "Pistol"
       }
-    ]
+    ],
+    "imageUrl": "data/images/brokhyr-iron-master.jpg"
   },
   {
     "id": "09d3-6357-7888-00d9",
@@ -858,7 +861,8 @@
         "name": "Anti",
         "description": "Anti"
       }
-    ]
+    ],
+    "imageUrl": "data/images/einhyr-hearthguard.jpg"
   },
   {
     "id": "415a-e6f6-d17f-d700",
@@ -969,7 +973,8 @@
         "name": "Indirect Fire",
         "description": "Indirect Fire"
       }
-    ]
+    ],
+    "imageUrl": "data/images/cthonian-beserks.jpg"
   },
   {
     "id": "9086-5272-398b-bbce",
@@ -1102,7 +1107,8 @@
         "name": "Sustained Hits",
         "description": "Sustained Hits"
       }
-    ]
+    ],
+    "imageUrl": "data/images/hernkyn-pioneers.jpg"
   },
   {
     "id": "9655-8367-7467-9e6e",
@@ -1219,7 +1225,8 @@
         "name": "Blast",
         "description": "Blast"
       }
-    ]
+    ],
+    "imageUrl": "data/images/sagitaur.jpg"
   },
   {
     "id": "ea1b-99f6-c398-06b1",
@@ -1323,7 +1330,8 @@
         "name": "Conversion (Thunderkyn)",
         "description": "Conversion (Thunderkyn)"
       }
-    ]
+    ],
+    "imageUrl": "data/images/brokhyr-thunderkyn.jpg"
   },
   {
     "id": "a110-e538-4e85-159b",
@@ -1499,7 +1507,8 @@
         "name": "One Shot",
         "description": "One Shot"
       }
-    ]
+    ],
+    "imageUrl": "data/images/hekaton-land-fortress.jpg"
   },
   {
     "id": "5b0b-c18d-1470-44bb",
@@ -1633,7 +1642,8 @@
         "name": "Precision",
         "description": "Precision"
       }
-    ]
+    ],
+    "imageUrl": "data/images/hernkyn-yaegirs.jpg"
   },
   {
     "id": "b7e1-55fd-9aae-b690",
@@ -1729,7 +1739,8 @@
         "name": "Precision",
         "description": "Precision"
       }
-    ]
+    ],
+    "imageUrl": "data/images/buri-aegnirssen.jpg"
   },
   {
     "id": "7932-6aac-cd01-3181",
@@ -1807,7 +1818,8 @@
         "name": "Pistol",
         "description": "Pistol"
       }
-    ]
+    ],
+    "imageUrl": "data/images/memnyr-strategist.jpg"
   },
   {
     "id": "e5c2-d1a0-b54d-65df",
@@ -2114,7 +2126,8 @@
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
       }
-    ]
+    ],
+    "imageUrl": "data/images/kapricus-carrier.jpg"
   },
   {
     "id": "1e3f-209d-798f-3a42",
@@ -2199,7 +2212,8 @@
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
       }
-    ]
+    ],
+    "imageUrl": "data/images/ironkin-steeljacks-with-heavy-volkanite-disintegrators.jpg"
   },
   {
     "id": "2add-0a08-fbef-8f5e",
@@ -2274,7 +2288,8 @@
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
       }
-    ]
+    ],
+    "imageUrl": "data/images/ironkin-steeljacks-with-melee-weapons.jpg"
   },
   {
     "id": "595a-cfac-3b40-710d",
@@ -2638,6 +2653,7 @@
         "name": "Extra Attacks",
         "description": "Extra Attacks"
       }
-    ]
+    ],
+    "imageUrl": "data/images/berehk-stornbrow.jpg"
   }
 ]
