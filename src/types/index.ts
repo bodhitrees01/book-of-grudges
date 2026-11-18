@@ -39,6 +39,8 @@ export interface WeaponProfile {
   damage: string;
   keywords: string[];
   abilities?: string;
+  /** Always show this weapon regardless of loadout notes (e.g. named/signature weapons) */
+  mandatory?: boolean;
 }
 
 export interface UnitProfile {

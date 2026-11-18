@@ -150,17 +150,17 @@ function WeaponsBlock({
     ? noteCounts
     : undefined;
 
+  const keepWeapon = (w: { name: string; mandatory?: boolean }, nc: Map<string, number>) => {
+    if (w.mandatory) return true;
+    const c = weaponCount(w.name, nc);
+    return c === undefined || c > 0;
+  };
+
   const ranged = effectiveCounts
-    ? unit.rangedWeapons.filter((w) => {
-        const c = weaponCount(w.name, effectiveCounts);
-        return c === undefined || c > 0;
-      })
+    ? unit.rangedWeapons.filter((w) => keepWeapon(w, effectiveCounts))
     : unit.rangedWeapons;
   const melee = effectiveCounts
-    ? unit.meleeWeapons.filter((w) => {
-        const c = weaponCount(w.name, effectiveCounts);
-        return c === undefined || c > 0;
-      })
+    ? unit.meleeWeapons.filter((w) => keepWeapon(w, effectiveCounts))
     : unit.meleeWeapons;
 
   if (!ranged.length && !melee.length) return null;

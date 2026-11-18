@@ -905,6 +905,19 @@
     ],
     "meleeWeapons": [
       {
+        "name": "➤ Concussion maul",
+        "range": "Melee",
+        "attacks": "3",
+        "skill": "4+",
+        "strength": "5",
+        "ap": "-2",
+        "damage": "3",
+        "keywords": [
+          "Anti-Monster 3+",
+          "Anti-Vehicle 3+"
+        ]
+      },
+      {
         "name": "Twin concussion gauntlets",
         "range": "Melee",
         "attacks": "4",
@@ -2576,7 +2589,8 @@
           "Anti-Monster 3+",
           "Anti-Vehicle 3+",
           "Sustained Hits 1"
-        ]
+        ],
+        "mandatory": true
       },
       {
         "name": "➤ Kromlôk's Revenge - plasma sweeps",
@@ -2588,7 +2602,8 @@
         "damage": "2",
         "keywords": [
           "Sustained Hits 1"
-        ]
+        ],
+        "mandatory": true
       },
       {
         "name": "Warforge gauntlets",
