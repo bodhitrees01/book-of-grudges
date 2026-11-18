@@ -1607,10 +1607,6 @@
         "description": "In your opponent's Movement phase, if an enemy unit ends a move within 8” of this unit, if this unit is not within Engagement Range of one or more enemy units, this unit can make a Normal move of up to D6”.'"
       },
       {
-        "name": "Shroudwërke Talismans",
-        "description": "This unit has -3\" **detection range**."
-      },
-      {
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
       },
