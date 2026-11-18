@@ -11,7 +11,7 @@ export async function loadVotannUnits(): Promise<{ units: ApiUnit[]; error?: str
   if (cacheError) return { units: [], error: cacheError };
 
   try {
-    const res = await fetch('data/units.json');
+    const res = await fetch(`data/units.json?v=${import.meta.env.VITE_APP_VERSION ?? Date.now()}`, { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data: ApiUnit[] = await res.json();
     cache = data;

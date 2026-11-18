@@ -55,6 +55,11 @@ export function weaponCount(
 
   const base = normalise(weaponName);
 
+  // Named/signature weapons (e.g. "Kromlôk's Revenge") are never listed as
+  // loadout options in GW app exports, so never hide them via filtering.
+  // We detect them by a possessive "'s" in the base name after normalisation.
+  if (base.includes("'s ") || base.endsWith("'s")) return undefined;
+
   // Exact base match (handles accented chars like ô → o)
   const baseMatch = normMap.get(base);
   if (baseMatch !== undefined) return baseMatch;
