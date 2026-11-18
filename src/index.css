@@ -45,7 +45,39 @@ html, body, #root {
 }
 .page-header h1 { font-size: 1.6rem; font-weight: 700; color: var(--gold); letter-spacing: .03em; }
 .page-header .subtitle { color: var(--muted); font-size: .85rem; margin-top: 2px; }
-.header-actions { margin-left: auto; display: flex; gap: 8px; }
+.header-actions { margin-left: auto; display: flex; gap: 8px; flex-shrink: 0; }
+
+/* ── Army header edit panel ── */
+.header-title-group { flex: 1; min-width: 0; }
+.header-edit-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.header-edit-name-row { display: flex; gap: 8px; align-items: center; }
+.header-edit-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 6px 10px;
+}
+.header-edit-input:focus { outline: none; border-color: var(--gold); }
+.header-edit-label { font-size: .78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.header-edit-detachments { display: flex; flex-direction: column; gap: 8px; }
+.header-edit-selected { display: flex; flex-wrap: wrap; gap: 6px; min-height: 24px; }
+.header-edit-det-list { display: flex; flex-direction: column; gap: 4px; max-height: 200px; overflow-y: auto; }
+.header-edit-actions { display: flex; gap: 8px; }
+.muted-text { font-size: .82rem; color: var(--muted); }
 
 .page-actions {
   display: flex;

@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Download, Plus, Trash2, Link, Swords, Star, X } from 'lucide-react';
+import { ArrowLeft, Download, Plus, Trash2, Link, Swords, Star, X, Pencil, Check } from 'lucide-react';
 import type { useArmyStore } from '../store/armyStore';
 import { UnitSearch } from '../components/UnitSearch';
 import { getAllEnhancements, useEnhancementsReady } from '../data/enhancements';
-import type { ApiUnit } from '../types';
+import { fetchDetachments } from '../api/openHammer';
+import type { ApiUnit, SelectedDetachment } from '../types';
+import type { OHDetachment } from '../api/openHammer';
 
 interface Props {
   store: ReturnType<typeof useArmyStore>;
 }
+
+const DETACHMENT_BUDGET = 3;
 
 export function ArmyEditorPage({ store }: Props) {
   const { armyId } = useParams<{ armyId: string }>();
@@ -18,7 +22,26 @@ export function ArmyEditorPage({ store }: Props) {
   const [editingEnhUnit, setEditingEnhUnit] = useState<string | null>(null);
   useEnhancementsReady();
 
+  // ── Army header edit state ────────────────────────────────
+  const [editingHeader, setEditingHeader] = useState(false);
+  const [draftName, setDraftName] = useState('');
+  const [availableDetachments, setAvailableDetachments] = useState<OHDetachment[]>([]);
+  const [detachmentsLoading, setDetachmentsLoading] = useState(false);
+  const [draftDetachments, setDraftDetachments] = useState<SelectedDetachment[]>([]);
+
   const army = store.armies.find((a) => a.id === armyId);
+
+  // Load available detachments when edit mode opens
+  useEffect(() => {
+    if (!editingHeader || !army) return;
+    setDraftName(army.name);
+    setDraftDetachments(army.detachments ?? []);
+    setDetachmentsLoading(true);
+    fetchDetachments(army.faction).then(({ detachments }) => {
+      setAvailableDetachments(detachments);
+      setDetachmentsLoading(false);
+    });
+  }, [editingHeader]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!army) {
     return (
@@ -28,6 +51,29 @@ export function ArmyEditorPage({ store }: Props) {
       </div>
     );
   }
+
+  const pointsSpent = draftDetachments.reduce((s, d) => s + d.cost, 0);
+  const pointsRemaining = DETACHMENT_BUDGET - pointsSpent;
+
+  const toggleDraftDetachment = (d: OHDetachment) => {
+    const already = draftDetachments.find((s) => s.id === d.id);
+    if (already) {
+      setDraftDetachments((prev) => prev.filter((s) => s.id !== d.id));
+    } else if (pointsRemaining >= d.cost) {
+      setDraftDetachments((prev) => [
+        ...prev,
+        { id: d.id, name: d.name, cost: d.cost, rule: d.rule, ruleDetail: d.ruleDetail },
+      ]);
+    }
+  };
+
+  const saveHeader = () => {
+    store.updateArmy(army.id, {
+      name: draftName.trim() || army.name,
+      detachments: draftDetachments,
+    });
+    setEditingHeader(false);
+  };
 
   const handleAddUnit = (apiUnit: ApiUnit) => {
     store.addUnit(army.id, {
@@ -80,11 +126,84 @@ export function ArmyEditorPage({ store }: Props) {
         <button className="btn-icon" onClick={() => navigate('/')}>
           <ArrowLeft size={18} />
         </button>
-        <div>
-          <h1>{army.name}</h1>
-          <p className="subtitle">{army.faction} · {army.points} pts · {army.units.length} units</p>
-        </div>
+
+        {editingHeader ? (
+          /* ── Edit mode ── */
+          <div className="header-edit-panel">
+            <div className="header-edit-name-row">
+              <input
+                className="header-edit-input"
+                value={draftName}
+                onChange={(e) => setDraftName(e.target.value)}
+                placeholder="Army name"
+                autoFocus
+              />
+            </div>
+
+            <div className="header-edit-detachments">
+              <span className="header-edit-label">Detachments ({pointsRemaining} pts remaining):</span>
+              {/* Currently selected */}
+              <div className="header-edit-selected">
+                {draftDetachments.map((d) => (
+                  <span key={d.id} className="enh-pill">
+                    {d.name}
+                    <button
+                      type="button"
+                      className="enh-pill-remove"
+                      onClick={() => setDraftDetachments((prev) => prev.filter((x) => x.id !== d.id))}
+                    >
+                      <X size={10} />
+                    </button>
+                  </span>
+                ))}
+                {draftDetachments.length === 0 && <span className="muted-text">None selected</span>}
+              </div>
+
+              {/* Available to pick */}
+              {detachmentsLoading && <span className="muted-text">Loading…</span>}
+              {!detachmentsLoading && availableDetachments.length > 0 && (
+                <div className="header-edit-det-list">
+                  {availableDetachments
+                    .filter((d) => !draftDetachments.find((s) => s.id === d.id))
+                    .map((d) => (
+                      <button
+                        key={d.id}
+                        type="button"
+                        className={`enh-pick-item${pointsRemaining < d.cost ? ' enh-pick-item--disabled' : ''}`}
+                        onClick={() => toggleDraftDetachment(d)}
+                        disabled={pointsRemaining < d.cost}
+                      >
+                        <span className="enh-pick-name">{d.name}</span>
+                        <span className="enh-pick-det">{d.cost} pt{d.cost !== 1 ? 's' : ''}</span>
+                      </button>
+                    ))}
+                </div>
+              )}
+            </div>
+
+            <div className="header-edit-actions">
+              <button className="btn-primary" onClick={saveHeader}>
+                <Check size={14} /> Save
+              </button>
+              <button className="btn-ghost" onClick={() => setEditingHeader(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* ── Display mode ── */
+          <div className="header-title-group">
+            <h1>{army.name}</h1>
+            <p className="subtitle">{army.faction} · {army.points} pts · {army.units.length} units</p>
+          </div>
+        )}
+
         <div className="header-actions">
+          {!editingHeader && (
+            <button className="btn-secondary" onClick={() => setEditingHeader(true)} title="Edit name & detachments">
+              <Pencil size={14} /> Edit
+            </button>
+          )}
           <button className="btn-secondary" onClick={handleExport}>
             <Download size={14} /> Export
           </button>
