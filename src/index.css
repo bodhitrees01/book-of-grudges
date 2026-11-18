@@ -422,13 +422,13 @@ select { appearance: auto; }
   border: none;
   padding: 0;
   cursor: pointer;
-  color: var(--accent2);
-  font-size: .78rem;
-  font-weight: 600;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 400;
   text-decoration: underline dotted;
   text-underline-offset: 2px;
 }
-.weapon-keyword-btn:hover { color: var(--gold); }
+.weapon-keyword-btn:hover { color: var(--text); }
 .weapon-keyword-tooltip {
   position: fixed;
   transform: translateY(-100%);
