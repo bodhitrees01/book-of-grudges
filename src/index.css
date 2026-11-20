@@ -926,6 +926,25 @@ select { appearance: auto; }
 .faction-rules-toggle:hover { background: rgba(99,170,120,.08); }
 .faction-rules-toggle svg { flex-shrink: 0; color: #7ecb94; }
 .faction-rules-toggle span { flex: 1; }
+.faction-rules-toggle--banner {
+  min-height: 96px;
+  padding: 14px 16px;
+  align-items: flex-end;
+  background:
+    linear-gradient(90deg, rgba(8,14,20,.92) 0%, rgba(8,14,20,.6) 45%, rgba(8,14,20,.1) 100%),
+    var(--banner) right center / cover no-repeat;
+  color: #e8f3ea;
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,.8);
+}
+.faction-rules-toggle--banner:hover {
+  background:
+    linear-gradient(90deg, rgba(8,14,20,.85) 0%, rgba(8,14,20,.45) 45%, rgba(8,14,20,0) 100%),
+    var(--banner) right center / cover no-repeat;
+}
+.faction-rules-toggle--banner svg { color: #9fe3b3; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8)); }
+@media (min-width: 700px) { .faction-rules-toggle--banner { min-height: 130px; font-size: 1.1rem; } }
 
 .faction-rules-body {
   border-top: 1px solid rgba(99,170,120,.25);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { ChevronDown, ChevronUp, Shield } from 'lucide-react';
 
 interface Props {
@@ -14,7 +14,8 @@ export function FactionRules({ faction }: Props) {
     <div className="faction-rules-panel">
       <button
         type="button"
-        className="faction-rules-toggle"
+        className="faction-rules-toggle faction-rules-toggle--banner"
+        style={{ '--banner': `url(${import.meta.env.BASE_URL}data/images/votann-banner.jpg)` } as CSSProperties}
         onClick={() => setOpen((v) => !v)}
       >
         <Shield size={15} />
