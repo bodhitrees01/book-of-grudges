@@ -185,13 +185,17 @@ function WeaponsBlock({
   );
 }
 
-function withArmyAbilities(au: ArmyUnit, detachments: SelectedDetachment[]): ArmyUnit {
+// `shown` collects detachment rule names already on the datasheet, so a rule
+// shared by a leader and its bodyguard unit only appears once.
+function withArmyAbilities(au: ArmyUnit, detachments: SelectedDetachment[], shown: Set<string>): ArmyUnit {
   const counts = au.notes ? parseLoadoutCounts(au.notes) : new Map<string, number>();
+  const detAbilities = detachmentAbilitiesFor(au.unitData, detachments).filter((ab) => !shown.has(ab.name));
+  detAbilities.forEach((ab) => shown.add(ab.name));
   const abilities = [
     ...au.unitData.abilities.filter(
       (ab) => counts.size === 0 || !ab.wargear || (weaponCount(ab.name, counts) ?? 0) > 0
     ),
-    ...detachmentAbilitiesFor(au.unitData, detachments),
+    ...detAbilities,
   ];
   return { ...au, unitData: { ...au.unitData, abilities } };
 }
@@ -211,7 +215,12 @@ export function Datasheet({
   useEnhancementsReady(); // triggers re-render once enhancements.json is loaded
   const weaponRules = useWeaponKeywords();
 
-  const unit = withArmyAbilities(armyUnit, army.detachments ?? []).unitData;
+  const shownDetRules = new Set<string>();
+  const attachedLeaders = armyUnit.attachedLeaderIds
+    .map((lid) => army.units.find((u) => u.id === lid))
+    .filter(Boolean)
+    .map((l) => withArmyAbilities(l as ArmyUnit, army.detachments ?? [], shownDetRules));
+  const unit = withArmyAbilities(armyUnit, army.detachments ?? [], shownDetRules).unitData;
 
   // Resolve enhancements: use the dedicated field if present, otherwise fall
   // back to parsing "Enhancement: <name>" lines out of notes (legacy imports
@@ -230,11 +239,6 @@ export function Datasheet({
     () => (isBattle && armyUnit.notes ? parseLoadoutCounts(armyUnit.notes) : new Map<string, number>()),
     [isBattle, armyUnit.notes]
   );
-
-  const attachedLeaders = armyUnit.attachedLeaderIds
-    .map((lid) => army.units.find((u) => u.id === lid))
-    .filter(Boolean)
-    .map((l) => withArmyAbilities(l as ArmyUnit, army.detachments ?? []));
 
   const allAbilities: AbilityEffect[] = [
     ...armyUnit.customAbilities,
