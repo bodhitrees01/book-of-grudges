@@ -22,7 +22,8 @@ export function parseLoadoutCounts(notes: string): Map<string, number> {
 function normalise(name: string): string {
   return name
     .replace(/^[➤►]\s*/, '')   // strip choice prefix
-    .replace(/\s*-\s*.+$/, '') // strip profile variant suffix ("- graviton strikes")
+    .replace(/\s+[-–]\s+.+$/, '') // strip profile variant suffix ("- graviton strikes")
+    .replace(/[’‘]/g, "'")
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '') // strip accents (ô → o, etc.)
@@ -32,6 +33,7 @@ function normalise(name: string): string {
 /** Normalise a user-supplied note key (from GW app export) for matching. */
 function normaliseNote(key: string): string {
   return key
+    .replace(/[’‘]/g, "'")
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
@@ -55,19 +57,12 @@ export function weaponCount(
 
   const base = normalise(weaponName);
 
-  // Named/signature weapons (e.g. "Kromlôk's Revenge") are never listed as
-  // loadout options in GW app exports, so never hide them via filtering.
-  // We detect them by a possessive "'s" in the base name after normalisation.
-  if (base.includes("'s ") || base.endsWith("'s")) return undefined;
+  const match = normMap.get(base);
+  if (match !== undefined) return match;
 
-  // Exact base match (handles accented chars like ô → o)
-  const baseMatch = normMap.get(base);
-  if (baseMatch !== undefined) return baseMatch;
-
-  // Partial: note key starts with our base name or vice versa
-  for (const [key, count] of normMap) {
-    if (key.startsWith(base) || base.startsWith(key)) return count;
-  }
+  // Named/signature weapons (e.g. "Kromlôk's Revenge") are never listed in
+  // GW app exports, so an unlisted possessive name must not be hidden.
+  if (/'s\b/.test(base)) return undefined;
 
   return 0; // weapon not mentioned in notes → not selected
 }
