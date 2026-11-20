@@ -184,6 +184,15 @@ function WeaponsBlock({
   );
 }
 
+function withLoadoutWargear(au: ArmyUnit): ArmyUnit {
+  const counts = au.notes ? parseLoadoutCounts(au.notes) : new Map<string, number>();
+  if (counts.size === 0) return au;
+  const abilities = au.unitData.abilities.filter(
+    (ab) => !ab.wargear || (weaponCount(ab.name, counts) ?? 0) > 0
+  );
+  return { ...au, unitData: { ...au.unitData, abilities } };
+}
+
 export function Datasheet({
   armyUnit,
   army,
@@ -199,7 +208,7 @@ export function Datasheet({
   useEnhancementsReady(); // triggers re-render once enhancements.json is loaded
   const weaponRules = useWeaponKeywords();
 
-  const unit = armyUnit.unitData;
+  const unit = withLoadoutWargear(armyUnit).unitData;
 
   // Resolve enhancements: use the dedicated field if present, otherwise fall
   // back to parsing "Enhancement: <name>" lines out of notes (legacy imports
@@ -221,7 +230,8 @@ export function Datasheet({
 
   const attachedLeaders = armyUnit.attachedLeaderIds
     .map((lid) => army.units.find((u) => u.id === lid))
-    .filter(Boolean) as ArmyUnit[];
+    .filter(Boolean)
+    .map((l) => withLoadoutWargear(l as ArmyUnit));
 
   const allAbilities: AbilityEffect[] = [
     ...armyUnit.customAbilities,

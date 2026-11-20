@@ -27,6 +27,8 @@ export interface AbilityEffect {
 export interface ApiAbility {
   name: string;
   description: string;
+  /** Optional wargear: only shown when the imported loadout lists it */
+  wargear?: boolean;
 }
 
 export interface WeaponProfile {

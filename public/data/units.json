@@ -280,6 +280,11 @@
       {
         "name": "Devastating Wounds",
         "description": "Devastating Wounds"
+      },
+      {
+        "name": "Weavefield Crest",
+        "description": "Models in the bearer's unit have a 5+ invulnerable save.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/hearthkyn-warriors.jpg"
@@ -376,6 +381,11 @@
       {
         "name": "Leader",
         "description": "Leader"
+      },
+      {
+        "name": "Rampart Crest",
+        "description": "While this model is leading a unit, models in that unit have a 5+ invulnerable save.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/kahl.jpg"
@@ -455,7 +465,7 @@
       },
       {
         "name": "Weavefield crest",
-        "description": "The bearer has a 4+ invulnerable save."
+        "description": "Models in the bearer's unit have a 5+ invulnerable save."
       },
       {
         "name": "Prioritised Efficiency",
@@ -860,6 +870,11 @@
       {
         "name": "Anti",
         "description": "Anti"
+      },
+      {
+        "name": "Weavefield Crest",
+        "description": "Models in the bearer's unit have a 5+ invulnerable save.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/einhyr-hearthguard.jpg"
@@ -1119,6 +1134,11 @@
       {
         "name": "Sustained Hits",
         "description": "Sustained Hits"
+      },
+      {
+        "name": "Panspectral Scanner",
+        "description": "Each time a model in the bearer's unit makes a ranged attack, re-roll a Hit roll of 1.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/hernkyn-pioneers.jpg"
@@ -1511,6 +1531,11 @@
       {
         "name": "One Shot",
         "description": "One Shot"
+      },
+      {
+        "name": "Panspectral Scanner",
+        "description": "Each time a model in the bearer's unit makes a ranged attack, re-roll a Hit roll of 1.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/hekaton-land-fortress.jpg"
@@ -2212,6 +2237,11 @@
       {
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
+      },
+      {
+        "name": "Preymark Crest",
+        "description": "Each time a model in the bearer's unit makes an attack that targets an enemy unit within range of one or more objective markers, on a Critical Wound, that attack has the [PRECISION] ability.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/ironkin-steeljacks-with-heavy-volkanite-disintegrators.jpg"
@@ -2288,6 +2318,11 @@
       {
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
+      },
+      {
+        "name": "Preymark Crest",
+        "description": "Each time a model in the bearer's unit makes an attack that targets an enemy unit within range of one or more objective markers, on a Critical Wound, that attack has the [PRECISION] ability.",
+        "wargear": true
       }
     ],
     "imageUrl": "data/images/ironkin-steeljacks-with-melee-weapons.jpg"
