@@ -4,6 +4,7 @@ import type { useArmyStore } from '../store/armyStore';
 import { Datasheet } from '../components/Datasheet';
 import { FactionRules } from '../components/FactionRules';
 import { DetachmentRules } from '../components/DetachmentRules';
+import { Stratagems } from '../components/Stratagems';
 import type { AbilityEffect } from '../types';
 import { getAttachableLeaders } from '../utils/leaderAttach';
 
@@ -99,6 +100,8 @@ export function BattleViewPage({ store }: Props) {
           );
         })}
       </div>
+
+      <Stratagems detachments={army.detachments ?? []} />
     </div>
   );
 }
