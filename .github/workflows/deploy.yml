@@ -29,8 +29,8 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE_PATH: /book-of-grudges/
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
         id: deployment
