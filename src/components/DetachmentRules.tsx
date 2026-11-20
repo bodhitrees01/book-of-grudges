@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import type { SelectedDetachment } from '../types';
+import type { ApiAbility, ApiUnit, SelectedDetachment } from '../types';
 
 interface DetachmentRule {
   detachmentName: string;
@@ -8,6 +8,8 @@ interface DetachmentRule {
   aliases: string[];
   ruleName: string;
   ruleText: string;
+  /** Unit keywords this rule applies to; when set, the rule is also shown on those datasheets */
+  unitKeywords?: string[];
 }
 
 const LOV_DETACHMENT_RULES: DetachmentRule[] = [
@@ -16,6 +18,7 @@ const LOV_DETACHMENT_RULES: DetachmentRule[] = [
     detachmentName: 'Armoured Trailblazers',
     aliases: ['armoured trailblazers', 'trailblazers'],
     ruleName: 'Sagitaur Spearhead',
+    unitKeywords: ['Sagitaur'],
     ruleText:
       'Friendly SAGITAUR units have Scouts 6".',
   },
@@ -23,6 +26,7 @@ const LOV_DETACHMENT_RULES: DetachmentRule[] = [
     detachmentName: 'Farseekers',
     aliases: ['farseekers'],
     ruleName: 'Eye of the Hunt',
+    unitKeywords: ['Hernkyn'],
     ruleText:
       'Friendly HERNKYN units\' ranged attacks that target a unit within 12" have +1 to hit rolls.',
   },
@@ -30,6 +34,7 @@ const LOV_DETACHMENT_RULES: DetachmentRule[] = [
     detachmentName: 'Hearthguard Covenant',
     aliases: ['hearthguard covenant'],
     ruleName: 'Avatars of the Ancestors',
+    unitKeywords: ['Kâhl', 'Einhyr Champion', 'Einhyr Hearthguard', 'Ûthar the Destined'],
     ruleText:
       'Friendly KÂHL, EINHYR CHAMPION, EINHYR HEARTHGUARD and ÛTHAR THE DESTINED units\' ranged attacks that target a unit within 9" can re-roll wound rolls of 1. This detachment has the HEARTHGUARD tag and cannot be taken with another HEARTHGUARD detachment.',
   },
@@ -66,6 +71,7 @@ const LOV_DETACHMENT_RULES: DetachmentRule[] = [
     detachmentName: 'Dêlve Assault Shift',
     aliases: ['delve', 'dêlve', 'assault shift'],
     ruleName: 'Fury From The Dêlve',
+    unitKeywords: ['Beserks'],
     ruleText:
       'CTHONIAN BESERKS units from your army have the Deep Strike ability. CTHONIAN BESERKS units from your army gain the BATTLELINE keyword.',
   },
@@ -90,6 +96,17 @@ function matchDetachments(stored: SelectedDetachment): DetachmentRule[] {
   return LOV_DETACHMENT_RULES.filter((r) =>
     r.aliases.some((alias) => name.includes(alias))
   );
+}
+
+const kw = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+/** Detachment rules that target this unit's keywords, as datasheet abilities. */
+export function detachmentAbilitiesFor(unit: ApiUnit, detachments: SelectedDetachment[]): ApiAbility[] {
+  const unitKws = new Set(unit.keywords.map(kw));
+  return detachments
+    .flatMap(matchDetachments)
+    .filter((r) => r.unitKeywords?.some((k) => unitKws.has(kw(k))))
+    .map((r) => ({ name: r.ruleName, description: `${r.detachmentName}: ${r.ruleText}` }));
 }
 
 interface CardProps {

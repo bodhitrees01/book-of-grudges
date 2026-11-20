@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Plus, Trash2, UserPlus, UserMinus } from 'lucide-react';
-import type { ArmyUnit, AbilityEffect, Army, WeaponProfile } from '../types';
+import type { ArmyUnit, AbilityEffect, Army, WeaponProfile, SelectedDetachment } from '../types';
 import { AddAbilityForm } from './AddAbilityForm';
 import { AttackPanel } from './AttackPanel';
 import { AbilitiesPanel } from './AbilitiesPanel';
@@ -8,6 +8,7 @@ import { WeaponKeyword } from './WeaponKeyword';
 import { parseLoadoutCounts, weaponCount } from '../utils/loadoutCounts';
 import { categorizeAbility, isWeaponKeywordAbility } from '../utils/categorizeAbility';
 import { lookupEnhancement, useEnhancementsReady } from '../data/enhancements';
+import { detachmentAbilitiesFor } from './DetachmentRules';
 
 interface Props {
   armyUnit: ArmyUnit;
@@ -184,12 +185,14 @@ function WeaponsBlock({
   );
 }
 
-function withLoadoutWargear(au: ArmyUnit): ArmyUnit {
+function withArmyAbilities(au: ArmyUnit, detachments: SelectedDetachment[]): ArmyUnit {
   const counts = au.notes ? parseLoadoutCounts(au.notes) : new Map<string, number>();
-  if (counts.size === 0) return au;
-  const abilities = au.unitData.abilities.filter(
-    (ab) => !ab.wargear || (weaponCount(ab.name, counts) ?? 0) > 0
-  );
+  const abilities = [
+    ...au.unitData.abilities.filter(
+      (ab) => counts.size === 0 || !ab.wargear || (weaponCount(ab.name, counts) ?? 0) > 0
+    ),
+    ...detachmentAbilitiesFor(au.unitData, detachments),
+  ];
   return { ...au, unitData: { ...au.unitData, abilities } };
 }
 
@@ -208,7 +211,7 @@ export function Datasheet({
   useEnhancementsReady(); // triggers re-render once enhancements.json is loaded
   const weaponRules = useWeaponKeywords();
 
-  const unit = withLoadoutWargear(armyUnit).unitData;
+  const unit = withArmyAbilities(armyUnit, army.detachments ?? []).unitData;
 
   // Resolve enhancements: use the dedicated field if present, otherwise fall
   // back to parsing "Enhancement: <name>" lines out of notes (legacy imports
@@ -231,7 +234,7 @@ export function Datasheet({
   const attachedLeaders = armyUnit.attachedLeaderIds
     .map((lid) => army.units.find((u) => u.id === lid))
     .filter(Boolean)
-    .map((l) => withLoadoutWargear(l as ArmyUnit));
+    .map((l) => withArmyAbilities(l as ArmyUnit, army.detachments ?? []));
 
   const allAbilities: AbilityEffect[] = [
     ...armyUnit.customAbilities,
