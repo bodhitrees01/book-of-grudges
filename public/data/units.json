@@ -1109,15 +1109,13 @@
       },
       {
         "name": "Comms array",
-        "description": "Each time you target the bearer’s unit with a Stratagem, roll one D6: on a 5+, you gain 1CP."
-      },
-      {
-        "name": "Pan-spectral scanner",
-        "description": "Each time a model in the bearer's unit makes a ranged attack, re-roll a Hit roll of 1."
+        "description": "Each time you target the bearer’s unit with a Stratagem, roll one D6: on a 5+, you gain 1CP.",
+        "wargear": true
       },
       {
         "name": "Rollbar searchlight",
-        "description": "Each time a model in the bearer's unit makes a ranged attack, you can ignore any or all modifiers to the Hit roll."
+        "description": "Each time a model in the bearer's unit makes a ranged attack, you can ignore any or all modifiers to the Hit roll.",
+        "wargear": true
       },
       {
         "name": "Prioritised Efficiency",

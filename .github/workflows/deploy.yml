@@ -32,5 +32,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+      # Artifact metadata can lag the upload; deploy-pages fails if it looks too soon
+      - run: sleep 20
       - uses: actions/deploy-pages@v5
         id: deployment
