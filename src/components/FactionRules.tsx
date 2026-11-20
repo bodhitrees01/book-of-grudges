@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react';
-import { ChevronDown, ChevronUp, Shield } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface Props {
   faction: string;
@@ -18,7 +18,11 @@ export function FactionRules({ faction }: Props) {
         style={{ '--banner': `url(${import.meta.env.BASE_URL}data/images/votann-banner.jpg)` } as CSSProperties}
         onClick={() => setOpen((v) => !v)}
       >
-        <Shield size={15} />
+        <img
+          className="faction-banner-mark"
+          src={`${import.meta.env.BASE_URL}data/images/votann-mark-white.png`}
+          alt=""
+        />
         <span>Leagues of Votann — Prioritised Efficiency</span>
         {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
       </button>
