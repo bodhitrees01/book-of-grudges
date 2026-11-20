@@ -41,6 +41,8 @@ function normalise(name: string): string {
 
 const normaliseNote = canonical;
 
+const singular = (s: string) => s.replace(/s$/, '');
+
 /**
  * Returns the model count for a datasheet weapon given parsed note counts,
  * or null if the weapon doesn't appear in notes (meaning it wasn't selected).
@@ -60,6 +62,12 @@ export function weaponCount(
 
   const match = normMap.get(base);
   if (match !== undefined) return match;
+
+  // Singular/plural mismatch ("Twin concussion gauntlet" vs "...gauntlets")
+  const stem = singular(base);
+  for (const [key, count] of normMap) {
+    if (singular(key) === stem) return count;
+  }
 
   // Named/signature weapons (e.g. "Kromlôk's Revenge") are never listed in
   // GW app exports, so an unlisted possessive name must not be hidden.
