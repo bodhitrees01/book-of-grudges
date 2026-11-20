@@ -1491,10 +1491,6 @@
         "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
       },
       {
-        "name": "Pan spectral scanner",
-        "description": "Each time a model in the bearer's unit makes a ranged attack, re-roll a Hit roll of 1."
-      },
-      {
         "name": "Prioritised Efficiency",
         "description": "Prioritised Efficiency"
       },
