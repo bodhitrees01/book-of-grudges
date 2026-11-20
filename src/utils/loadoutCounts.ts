@@ -41,7 +41,8 @@ function normalise(name: string): string {
 
 const normaliseNote = canonical;
 
-const singular = (s: string) => s.replace(/s$/, '');
+// Loose key: ignores plural 's', hyphens and spaces ("Exoarmour" vs "Exo-armour").
+const loose = (s: string) => s.replace(/s$/, '').replace(/[-\s]/g, '');
 
 /**
  * Returns the model count for a datasheet weapon given parsed note counts,
@@ -63,10 +64,9 @@ export function weaponCount(
   const match = normMap.get(base);
   if (match !== undefined) return match;
 
-  // Singular/plural mismatch ("Twin concussion gauntlet" vs "...gauntlets")
-  const stem = singular(base);
+  const stem = loose(base);
   for (const [key, count] of normMap) {
-    if (singular(key) === stem) return count;
+    if (loose(key) === stem) return count;
   }
 
   // Named/signature weapons (e.g. "Kromlôk's Revenge") are never listed in
