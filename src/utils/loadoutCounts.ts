@@ -18,27 +18,28 @@ export function parseLoadoutCounts(notes: string): Map<string, number> {
   return counts;
 }
 
-/** Normalise a datasheet weapon name for matching against note keys. */
-function normalise(name: string): string {
-  return name
-    .replace(/^[➤►]\s*/, '')   // strip choice prefix
-    .replace(/\s+[-–]\s+.+$/, '') // strip profile variant suffix ("- graviton strikes")
-    .replace(/[’‘]/g, "'")
-    .toLowerCase()
+// GW exports use typographic hyphens, apostrophes and spaces (e.g. U+2011).
+function canonical(s: string): string {
+  return s
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '') // strip accents (ô → o, etc.)
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u2010-\u2015\u2212]/g, '-')
+    .replace(/[\u2018\u2019\u02bc`]/g, "'")
+    .replace(/[\s\u00a0\u202f]+/g, ' ')
+    .toLowerCase()
     .trim();
 }
 
-/** Normalise a user-supplied note key (from GW app export) for matching. */
-function normaliseNote(key: string): string {
-  return key
-    .replace(/[’‘]/g, "'")
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .trim();
+/** Normalise a datasheet weapon name for matching against note keys. */
+function normalise(name: string): string {
+  return canonical(
+    name
+      .replace(/^[➤►]\s*/, '') // strip choice prefix
+      .replace(/\s+[-\u2010-\u2015]\s+.+$/, '') // strip profile variant suffix ("- graviton strikes")
+  );
 }
+
+const normaliseNote = canonical;
 
 /**
  * Returns the model count for a datasheet weapon given parsed note counts,
